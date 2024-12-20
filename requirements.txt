@@ -1,0 +1,3 @@
+#The main library for running Spark applications in Python
+
+pyspark>=3.0.0
