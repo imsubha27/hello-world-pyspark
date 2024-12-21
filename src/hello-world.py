@@ -5,8 +5,8 @@ from pyspark.sql import SparkSession
 def main():
     # Initialize SparkSession
     spark = SparkSession.builder \
-    .appName("HelloWorld") \
-    .getOrCreate()
+        .appName("HelloWorld") \
+        .getOrCreate()
     
     # Print "Hello, World!"
     print("Hello, World!")
@@ -17,6 +17,7 @@ def main():
     df = spark.createDataFrame(data, columns)
     
     # Show the DataFrame
+    print("___Hello World DataFrame___")
     df.show()
     
     # Stop Spark session
