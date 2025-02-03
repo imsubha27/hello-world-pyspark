@@ -1,0 +1,32 @@
+name: Hello-World-Pyspark
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  spark-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Install Spark
+      run: |
+        wget https://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz
+        tar xvf spark-3.1.2-bin-hadoop3.2.tgz
+        export SPARK_HOME=$(pwd)/spark-3.1.2-bin-hadoop3.2
+        export PATH=$SPARK_HOME/bin:$PATH
+
+    - name: Execute PySpark Job
+      run: |
+        export SPARK_HOME=$(pwd)/spark-3.1.2-bin-hadoop3.2
+        export PATH=$SPARK_HOME/bin:$PATH
+        pyspark your_pyspark_script.py
